@@ -9,10 +9,7 @@
 
     session_start();
 
-    if(!isset($_SESSION["numero"]))
-    
-
-
-
-    
+    if(!isset($_SESSION["numero"])){
+        
+    }
 ?>
