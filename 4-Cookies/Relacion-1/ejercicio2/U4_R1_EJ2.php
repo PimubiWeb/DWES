@@ -12,7 +12,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,19 +21,19 @@
 </head>
 <body>
     <form action="paginanueva.php" method="post">
-    <p>Selecciona el idioma
-        <input type="radio" name="idioma" <?php echo "$esp_checked"?> value="esp"> Español
-        <input type="radio" name="idioma" <?php echo "$en_checked"?> value="en"> Ingles
+    <p><?php echo $_COOKIE["idioma"] == "en" ?  "Select a language" : "Selecciona un idioma" ?>
+        <input type="radio" name="idioma" <?php echo "$esp_checked"?> value="esp"> <?php echo $_COOKIE["idioma"] == "esp" ?  "Español" : "Spanish" ?>
+        <input type="radio" name="idioma" <?php echo "$en_checked"?> value="en"> <?php echo $_COOKIE["idioma"] == "en" ?  "English" : "Ingles" ?> 
 
-        <input type="submit" value="cambiar idioma">
+        <input type="submit" value=<?php echo $_COOKIE["idioma"] == "en" ?  "change languague" : "cambiar idioma" ?>>
     </p>
     
     </form>
 <?php
     if(!isset($_COOKIE['idioma']) or $_COOKIE['idioma'] === "esp"){
-        echo "hola";
+        echo "hola esto es un formulario en clase de Belen";
     }else{
-        echo "hello";
+        echo "hello there is a form in Belen class";
     }
 ?>
 </body>
