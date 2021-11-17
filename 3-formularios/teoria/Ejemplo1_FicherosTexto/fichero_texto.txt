@@ -1,0 +1,3 @@
+Esto es un archivo de texto,
+que tiene 
+más de una línea 
