@@ -32,7 +32,7 @@
     echo _FILE_ ."y esta la ruta de mi anchivo"." br"; 
     echo PHP_INT_SIZE.' dato entero'.' br'; 
     echo PHP_INT_MIN.' este es el val minimo de un entero!';
-    echo PHP_INT_MAX.' y este el valor minimo de un entero "."<br>";
+    echo PHP_INT_MAX.' y este el valor minimo de un entero '.'<br>';
 
 
 ?>
