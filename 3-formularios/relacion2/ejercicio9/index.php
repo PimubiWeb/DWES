@@ -59,7 +59,7 @@ if (isset($_POST['subir'])) {
     <title>U3_R2_EJ8</title>
 </head>
 <body>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" method="POST" enctype="multipart/form-data"/>
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" method="POST" enctype="multipart/form-data">
     Añadir imagen: <input name="archivo" id="archivo" type="file"/>
     <input type="submit" name="subir" value="Subir imagen"/>
     </form>

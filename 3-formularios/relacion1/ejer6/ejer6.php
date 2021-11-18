@@ -22,6 +22,7 @@ Muestra la media en la parte inferior.
     <title>Relacion-Ejercicio5</title>
 </head>
 <body>
-    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']"></form>
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']"
+    </form>
 </body>
 </html>
