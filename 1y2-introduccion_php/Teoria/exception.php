@@ -10,7 +10,7 @@ try{
 } catch (Exception $e) { 
     echo "Ha habido un error".$e->getMessage()."<br>";
 }finally{
-    echo "Todo correcto";
+    echo "El programa ha terminado";
 }
 
 ?>

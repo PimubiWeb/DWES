@@ -26,9 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $emailErr = "Email is required";
   } else {
     $email = test_input($_POST["email"]);
-    // check if e-mail address is well-formed
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $emailErr = "Invalid email format";
+      $emailErr = "formato email invalido";
     }
   }
 
@@ -38,12 +37,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $num = test_input($_POST["num"]);
     // check if num is well
     if (!filter_var($num, FILTER_VALIDATE_INT)) {
-      $numErr = "Invalid number format";
+      $numErr = "numero invalido";
     }
   }
 
   if (empty($_POST["file"])) {
-    $fileErr = "file is required";
+    $fileErr = "archivo es requerido";
   } else {
     $file = $_POST["file"];
     $archivo = fopen($file,"r");
@@ -77,7 +76,7 @@ function test_input($data) {
   <br><br>
   <input type="submit" name="submit" value="Submit">
   <input type="reset" name="reset" value="Borrar">
- </form>
+</form>
 
 <?php
 echo "<h2>Your Input:</h2>";
