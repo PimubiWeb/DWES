@@ -1,4 +1,5 @@
 <?php
+/*
 require('conexion.php');
 
 //VALIDACIONES
@@ -38,4 +39,74 @@ $consulta = "INSERT INTO usuarios(nombre,apellidos,email,password) VALUES('$nomb
 
 mysqli_query($conexion,$consulta);
 mysqli_close($conexion);
+*/
+
+if(isset($_POST)){
+
+    //conexion a la base de datos
+    require_once 'includes/conexion.php';
+
+    //iniciar sesion
+    if(!isset($_SESSION)){
+        session_start();
+    }
+
+    //recoger los valores del formulario de registro
+    //para dar mayor seguridad usamos mysqli_real_escape_string
+    $nombre = isset($_POST['nombre']) ? mysqli_real_escape_string($db, $_POST['nombre']) : false;
+    $apellidos = isset($_POST['apellidos']) ? mysqli_real_escape_string($db, $_POST['apellidos']) : false;
+    $email = isset($_POST['email']) ? mysqli_real_escape_string($db, trim($_POST['email'])) : false;
+    $password = isset($_POST['password']) ? mysqli_real_escape_string($db, $_POST['password']) : false;
+
+    //array errores
+    $errores = array();
+
+    //validar los datos antes de guardarlos en la base de datos
+
+    //validar campo nombre
+    if(!empty($nombre) && !is_numeric($nombre) && !preg_match("/[0-9]/", $nombre)){
+        $nombre_validado = true;
+    }else{
+        $nombre_validado = false;
+        $errores['nombre'] = "El nombre no es válido";
+    }
+
+    //validar campo apellidos
+    if(!empty($apellidos) && !is_numeric($apellidos) && !preg_match("/[0-9]/", $apellidos)){
+        $apellidos_validado = true;
+    }else{
+        $apellidos_validado = false;
+        $errores['apellidos'] = "El apellidos no es válido";
+    }
+
+    //validar email
+    if(!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $email_valido = true;
+    }else{
+        $email_valido = false;
+        $errores['email'] = "el email no es válido";
+    }
+
+    //validar contraseña
+    if(!empty($password)) {
+        $password_valido = true;
+    }else{
+        $password_valido = false;
+        $errores['password'] = "la contraseña no es válida";
+    }
+
+    if(count($errores) == 0){
+        $guardar_usuario = true;
+
+        //cifrar la contraseña
+        $password_segura = password_hash($password, PASSWORD_BCRYPT, ['cost' => 4]);
+
+        //INSERTAR USUARIO EN LA TABLA USUARIOS DE LA BBDD
+        $sql = "INSERT INTO usuarios VALUES(null,'$nombre', '$apellidos, '$email,'$password_segura', CURDATE())";
+        //TODO iepa
+
+
+    }
+    
+}
 ?>

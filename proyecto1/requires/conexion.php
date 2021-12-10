@@ -1,8 +1,4 @@
 <?php
-$servidor = 'localhost';
-$usuario = 'root';
-$password = '';
-$proyecto = 'proyecto1';
-
-$conexion = mysqli_connect($servidor,$usuario,$password,$proyecto) or die(mysql_error($mysqli));
+//conexion a la base de datos
+$db = mysqli_connect('localhost','root','','proyecto1') or die(mysql_error($mysqli));
 ?>
