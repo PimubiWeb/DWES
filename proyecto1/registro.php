@@ -103,10 +103,20 @@ if(isset($_POST)){
 
         //INSERTAR USUARIO EN LA TABLA USUARIOS DE LA BBDD
         $sql = "INSERT INTO usuarios VALUES(null,'$nombre', '$apellidos, '$email,'$password_segura', CURDATE())";
-        //TODO iepa
+        $guardar = mysqli_query($db, $qsl);
+
+        if($guardar) {
+            $_SESSION['completado'] = "El registro se ha completado.";
+        }else{
+            $_SESSION['errores']['general'] = "Fallo al guardar el usuario";
+        }
 
 
+    }else{
+        $_SESSION['errores'] = $errores;
     }
     
 }
+
+header('Location: index.php');
 ?>

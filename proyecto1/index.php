@@ -26,6 +26,8 @@
     <div id="todas">
         <a href="">Ver todas las entradas </a>
     </div>
+
+    <?php require_once 'requires/pie.php';?>
     
 </body>
 </html>
