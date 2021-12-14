@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>suggestUser</title>
+</head>
+<body>
+    <form action="" method="GET">
+        <label for="user">User: </label>
+        <input type="text" for="user" id="2"><br>
+    </form>
+    <div id="1">
+
+    </div>
+    <script>
+    function suggest(valor) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var php = this.responseText;
+        document.getElementById("1").innerHTML = this.responseText;
+       //document.getElementById("demo").innerHTML = "sugerencias: <br>";
+        
+      }
+    };
+    xhttp.open("GET", "userinuse.php?user="+valor, true);
+    xhttp.send();
+  }
+
+  setInterval(() => {
+    query = document.getElementById('2');
+    if(query.value.length >= 4){suggest(query.value)}
+    }   , 1000);
+
+    </script>
+</body>
+</html>
