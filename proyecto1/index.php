@@ -1,33 +1,34 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>proyecto php</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
+<?php require_once 'includes/cabecera.php'; ?>
+		
+<?php require_once 'includes/lateral.php'; ?>
 
-<body>
-    <?php require_once 'requires/cabecera.php';?>
-    <?php require_once 'requires/lateral.php';?>
-    
-    <h1>Ultimas entradas</h1>
-    <div class="entradas">
-        <article class="entrada">
-            <h2>Titulo de mi entrada</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab nobis dicta voluptatum dolor quibusdam molestias totam. Hic, illum, rem voluptatibus quo sequi tempore laboriosam nisi dignissimos aliquam quisquam sint. Recusandae.</p>
-        </article>
-        <article class="entrada">
-            <h2>Titulo de mi entrada2</h2>
-            <p>Pokemon la nueva serie mejor vista en todo japon.</p>
-        </article>
-    </div>
-    <div id="todas">
-        <a href="">Ver todas las entradas </a>
-    </div>
+		
+<!-- CAJA PRINCIPAL -->
+<div id="principal">
+	<h1>Ultimas entradas</h1>
+	
+	<?php 
+		$entradas = conseguirEntradas($db, true);
+		if(!empty($entradas)){
+			while($entrada = mysqli_fetch_assoc($entradas)){
+	?>
+				<article class="entrada">
+					<a href="entrada.php?id=<?=$entrada['id']?>">
+						<h2><?php $entrada['titulo']?></h2>
+						<span class="fecha"><?php $entrada['categoria'].' -- '.$entrada['fecha']?></span>
+						<p>
+							<?php substr($entrada['descripcion'], 0, 180)."...";?>
+						</p>
+					</a>
+				</article>
+	<?php
+			}
+		}
+	?>
 
-    <?php require_once 'requires/pie.php';?>
-    
-</body>
-</html>
+	<div id="ver-todas">
+		<a href="entradas.php">Ver todas las entradas</a>
+	</div>
+</div>
+		
+<?php require_once 'includes/pie.php'; ?>
