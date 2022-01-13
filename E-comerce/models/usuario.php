@@ -1,0 +1,3 @@
+<?php
+//metodo llamado registro
+
