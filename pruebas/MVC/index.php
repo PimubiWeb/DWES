@@ -3,11 +3,17 @@
 <?php
 require_once 'controllers/usuario.php';
 
-$controlador = new UsuarioController();
+if(isset($_GET['controller'])) {
+    $nombre_controllador = $_GET['controller'].'Controller';
+}else{
+    echo "La pagina que buscas no existe";
+    exit();
+}
+
 
 //comprobamos si existe el controlador que estamos pasando por la URL
 if(isset($_GET['controller']) && class_exists($_GET['controller'])){
-    $nombre_controllador = $_GET['controller'].'Controller';
+    
     $controlador = new $nombre_controllador();
     
     //si existe el controlador comprobamos si existe el metodo
